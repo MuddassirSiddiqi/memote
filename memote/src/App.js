@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { NotesProvider } from "./context/NotesContext";
 import Onboarding from "./components/Onboarding";
 import NoteList from "./components/NoteList";
@@ -9,29 +9,23 @@ import "./App.css";
 /**
  * App
  * Top-level component. Wraps children with NotesProvider.
- * Defines routes:
- * - "/"        → Onboarding
- * - "/notes"   → NoteList
- * - "/editor/:id" → NoteEditor
- * Any unknown route redirects to "/" (Onboarding).
+ * Defines routes using React Router v6:
+ *  "/"            → Onboarding
+ *  "/notes"       → NoteList
+ *  "/editor/:id"  → NoteEditor
+ * Any unknown route redirects to "/".
  */
 function App() {
   return (
     <NotesProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Onboarding />
-          </Route>
-          <Route exact path="/notes">
-            <NoteList />
-          </Route>
-          <Route exact path="/editor/:id">
-            <NoteEditor />
-          </Route>
-          <Redirect to="/" />
-        </Switch>
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Onboarding />} />
+          <Route path="/notes" element={<NoteList />} />
+          <Route path="/editor/:id" element={<NoteEditor />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
     </NotesProvider>
   );
 }

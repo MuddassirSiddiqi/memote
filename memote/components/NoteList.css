@@ -1,0 +1,42 @@
+/* src/components/NoteList.css */
+
+.note-list-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f1f5f6;
+}
+
+.note-list-container {
+  flex: 1;
+  padding: 16px 24px;
+  overflow-y: auto;
+}
+
+.no-notes-message {
+  margin-top: 48px;
+  text-align: center;
+  color: #777777;
+  font-size: 1rem;
+}
+
+.note-list-add-button {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 32px;
+  background-color: #00bfa5;
+  color: #ffffff;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.note-list-add-button:hover {
+  background-color: #009e88;
+  transform: translateY(-2px);
+}
